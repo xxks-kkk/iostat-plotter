@@ -55,8 +55,8 @@ import sys
 try:
    import shlex                      # Needed for splitting input lines
 except ImportError:
-   print("Cannot import shlex module - this is needed for this application.");
-   print("Exiting...")
+   print "Cannot import shlex module - this is needed for this application.";
+   print "Exiting..."
    sys.exit();
 
 try:
@@ -64,8 +64,8 @@ try:
    time_var = 1
 except:
    time_var = 0;
-   print("Cannot find time module - this is needed for this application.");
-   print("Exiting...")
+   print "Cannot find time module - this is needed for this application.";
+   print "Exiting..."
    sys.exit();
 
 try:
@@ -73,23 +73,23 @@ try:
    matplotlib_var = 1
 except:
    matplotlib_var = 0;
-   print("Cannot find matplotlib - this is needed for this application.");
-   print("Exiting...")
+   print "Cannot find matplotlib - this is needed for this application.";
+   print "Exiting..."
    sys.exit();
 
 try:
    import os                           # Needed for mkdir
 except ImportError:
-   print("Cannot import os module - this is needed for this application.");
-   print("Exiting...")
+   print "Cannot import os module - this is needed for this application.";
+   print "Exiting..."
    sys.exit();
 
 try:
    import pickle                      # Needed for pickle
    pickle_success = 1;
 except ImportError:
-   print("Cannot import pickle module - this is not needed for this application.");
-   print("Continuing to process");
+   print "Cannot import pickle module - this is not needed for this application.";
+   print "Continuing to process";
    pickle_success = 0;
 
 
@@ -98,70 +98,70 @@ except ImportError:
 
 def help_out():
    # prints out help information and stops
-   print(" ");
-   print("This application creates a short HTML based report from iostat output");
-   print("(part of the sysstat tools). The report includes plots that help");
-   print("analyze the output. It can adapt to sysstat v9.x format or sysstat");
-   print("v10.x output (it is slightly different). Many distributions such as");
-   print("CentOS or Red Hat use sysstat version 9.x. However, it is recommended");
-   print("that you upgrad to sysstat 10.x because you get slightly more information.");
-   print("It is not a difficult task but be sure you install over the previous");
-   print("version.");
-   print(" ");
-   print("To run the application first gather the iostat information using: ");
-   print("the following example.");
-   print(" ");
-   print("[laytonjb ~]$ iostat -c -d -x -t -m /dev/sda 1 100 > iostat.out ");
-   print(" ");
-   print("where the \"-c\" option displays the CPU utilization, the \"-d\" option");
-   print("displays the device utilization, the \"-x\" option displays extended");
-   print("statistics, and the \"-m\" option diplays the statistics in megabytes");
-   print("per second. The options \"1 100\" tell iostat to use \"1\" second ");
-   print("intervals and \"100\" means to gather data for 100 internvals (or 100");
-   print("seconds in this case). ");
-   print(" ");
-   print("After the \"-m\" option is /dev/sda which is the specific device");
-   print("you want to monitor. This option is up to you. If you don't put a ");
-   print("device there, iostat will monitor all devices. For example:")
-   print(" ");
-   print("[laytonjb ~]$ iostat -c -d -x -t -m 1 100 > iostat.out ");
-   print(" ");
-   print("which captures the data from all devices.");
-   print(" ");
-   print("In these two examples, the output from iostat is send to a file which is");
-   print("\"iostat.out\". You can name the file anything you want but be sure ");
-   print("note the name of the file.");
-   print(" ");
-   print("Then to run iostat_plotter using the iostat output file, the command is, ");
-   print(" ");
-   print("[laytonjb ~]$ iostat_plotter.py iostat.out ");
-   print(" ");
-   print("where \"iostat.out\" is the output from iostat. The code is written ");
-   print("in Python (obviously) and uses the shlex, time, os, and matplotlib ");
-   print("modules. Be sure this libraries are installed on your system.");
-   print(" ");
-   print("You can run iostat_plotter in one of two ways. The first way creates ");
-   print("the set of plots for each device on the node. In this version of ");
-   print("iostat_plotter, 11 plots are created per device, so if you have two");
-   print("devices on the node, then you will ahve a total of 22 plots.");
-   print(" ");
-   print("The other way to run niostat_plotter is to combine the results for each");
-   print("device in the plots. This means you will have only 11 plots ");
-   print("in the HTML report even if you have more than one device. You run this ");
-   print("with the following command:");
-   print(" ");
-   print("[laytonjb ~]$ iostat_plotter.py -c iostat.out ");
-   print(" ");
-   print("The option \"-c\" tells iostat_plotter to \"combine\" the results from");
-   print("all of the devices into a single plot. Currently, you can analyze about");
-   print("8 devices. With more than 8 devices, the legend labels run into each other.");
-   print(" ");
-   print("When iostat_plotter is done it will create a subdirectory \"HTML_REPORT\" ");
-   print("that contains the plots and an html file \"report.html\". Open that ");
-   print("html file in a browser or word processor and you will see the plots ");
-   print("and a small write-up about them. Feel free to modify the code but ");
-   print("please send back changes. ");
-   print(" ");
+   print " ";
+   print "This application creates a short HTML based report from iostat output";
+   print "(part of the sysstat tools). The report includes plots that help";
+   print "analyze the output. It can adapt to sysstat v9.x format or sysstat";
+   print "v10.x output (it is slightly different). Many distributions such as";
+   print "CentOS or Red Hat use sysstat version 9.x. However, it is recommended";
+   print "that you upgrad to sysstat 10.x because you get slightly more information.";
+   print "It is not a difficult task but be sure you install over the previous";
+   print "version.";
+   print " ";
+   print "To run the application first gather the iostat information using: ";
+   print "the following example.";
+   print " ";
+   print "[laytonjb ~]$ iostat -c -d -x -t -m /dev/sda 1 100 > iostat.out ";
+   print " ";
+   print "where the \"-c\" option displays the CPU utilization, the \"-d\" option";
+   print "displays the device utilization, the \"-x\" option displays extended";
+   print "statistics, and the \"-m\" option diplays the statistics in megabytes";
+   print "per second. The options \"1 100\" tell iostat to use \"1\" second ";
+   print "intervals and \"100\" means to gather data for 100 internvals (or 100";
+   print "seconds in this case). ";
+   print " ";
+   print "After the \"-m\" option is /dev/sda which is the specific device";
+   print "you want to monitor. This option is up to you. If you don't put a ";
+   print "device there, iostat will monitor all devices. For example:"
+   print " ";
+   print "[laytonjb ~]$ iostat -c -d -x -t -m 1 100 > iostat.out ";
+   print " ";
+   print "which captures the data from all devices.";
+   print " ";
+   print "In these two examples, the output from iostat is send to a file which is";
+   print "\"iostat.out\". You can name the file anything you want but be sure ";
+   print "note the name of the file.";
+   print " ";
+   print "Then to run iostat_plotter using the iostat output file, the command is, ";
+   print " ";
+   print "[laytonjb ~]$ iostat_plotter.py iostat.out ";
+   print " ";
+   print "where \"iostat.out\" is the output from iostat. The code is written ";
+   print "in Python (obviously) and uses the shlex, time, os, and matplotlib ";
+   print "modules. Be sure this libraries are installed on your system.";
+   print " ";
+   print "You can run iostat_plotter in one of two ways. The first way creates ";
+   print "the set of plots for each device on the node. In this version of ";
+   print "iostat_plotter, 11 plots are created per device, so if you have two";
+   print "devices on the node, then you will ahve a total of 22 plots.";
+   print " ";
+   print "The other way to run niostat_plotter is to combine the results for each";
+   print "device in the plots. This means you will have only 11 plots ";
+   print "in the HTML report even if you have more than one device. You run this ";
+   print "with the following command:";
+   print " ";
+   print "[laytonjb ~]$ iostat_plotter.py -c iostat.out ";
+   print " ";
+   print "The option \"-c\" tells iostat_plotter to \"combine\" the results from";
+   print "all of the devices into a single plot. Currently, you can analyze about";
+   print "8 devices. With more than 8 devices, the legend labels run into each other.";
+   print " ";
+   print "When iostat_plotter is done it will create a subdirectory \"HTML_REPORT\" ";
+   print "that contains the plots and an html file \"report.html\". Open that ";
+   print "html file in a browser or word processor and you will see the plots ";
+   print "and a small write-up about them. Feel free to modify the code but ";
+   print "please send back changes. ";
+   print " ";
 
 # end def
 
@@ -2003,11 +2003,11 @@ if __name__ == '__main__':
       help_out();
       sys.exit();
    # end if
-   print("combined_plots = ",combined_plots);
+   print "combined_plots = ",combined_plots;
    
-   print("iostat plotting script");
-   print(" ");
-   print("input filename: ",input_filename);
+   print "iostat plotting script";
+   print " ";
+   print "input filename: ",input_filename;
    
    # Initialize lists that will store data
    user_list = [];
@@ -2064,8 +2064,8 @@ if __name__ == '__main__':
    time_flag = -1;      # -1 = don't read start time information, 1 = read start time information
    
    # loop over lines in input file
-   print(" ");
-   print("reading iostat output file ... ");
+   print " ";
+   print "reading iostat output file ... ";
    icount = 0;
    for line in open(input_filename,'r').readlines():
       currentline = shlex.split(line);
@@ -2122,15 +2122,15 @@ if __name__ == '__main__':
                   if (first_flag == 0):
                      if (len(currentline) == 12):
                         vflag = 9;
-                        print("Using Version 9 format of sysstat tools");
+                        print "Using Version 9 format of sysstat tools";
                      elif (len(currentline) == 14):
                         vflag = 10;
-                        print("Using Version 10 format of sysstat tools");
+                        print "Using Version 10 format of sysstat tools";
                      else:
-                        print("Error: each line has ",len(currentline)," elements")
-                        print("This code is designed for 12 elemenets for sysstat V9");
-                        print("or 14 elements for sysstat V10");
-                        print("Stopping");
+                        print "Error: each line has ",len(currentline)," elements"
+                        print "This code is designed for 12 elemenets for sysstat V9";
+                        print "or 14 elements for sysstat V10";
+                        print "Stopping";
                         sys.exit();
                      # end if
                      first_flag = 1;
@@ -2175,15 +2175,15 @@ if __name__ == '__main__':
                if (first_flag == 0):
                   if (len(currentline) == 12):
                      vflag = 9;
-                     print("Using Version 9 format of sysstat tools");
+                     print "Using Version 9 format of sysstat tools";
                   elif (len(currentline) == 14):
                      vflag = 10;
-                     print("Using Version 10 format of sysstat tools");
+                     print "Using Version 10 format of sysstat tools";
                   else:
-                     print("Error: each line has ",len(currentline)," elements")
-                     print("This code is designed for 12 elemenets for sysstat V9");
-                     print("or 14 elements for sysstat V10");
-                     print("Stopping");
+                     print "Error: each line has ",len(currentline)," elements"
+                     print "This code is designed for 12 elemenets for sysstat V9";
+                     print "or 14 elements for sysstat V10";
+                     print "Stopping";
                      sys.exit();
                   # end if
                   first_flag = 1;
@@ -2243,7 +2243,7 @@ if __name__ == '__main__':
             #print "      Reading and storing CPU headers";
             cpu_labels = [];
             cpu_labels = currentline;
-            cpu_flag = 1;
+	    cpu_flag = 1;
             #print "      cpu_labels = ",cpu_labels
          elif (time_flag == 1):
             #print "   Read time information";
@@ -2291,8 +2291,8 @@ if __name__ == '__main__':
          # end if
       # end if
    # end for
-   print("Finished reading ",icount," data points for ",len(device_data_list)," devices.");
-   print("Creating plots and HTML report");
+   print "Finished reading ",icount," data points for ",len(device_data_list)," devices.";
+   print "Creating plots and HTML report";
    
    # Create time list for x-axis data (need to convert to regular time format)
    x_seconds = [];
@@ -2503,7 +2503,7 @@ if __name__ == '__main__':
       for item in device_data_list:
          iloop = iloop + 1;
          
-         print("Device: ",item["device"]);
+         print "Device: ",item["device"];
          output_str = "<HR> \n";
          f.write(output_str);
          
@@ -2514,39 +2514,39 @@ if __name__ == '__main__':
          iplot = iplot + 1;
          plot1(iloop, iplot, combined_plots, f, dirname, x_seconds, user_list, system_list, 
                nice_list, fsize, item);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 2: iowait percentage time
          iplot = iplot + 1;
          fsize = 6;
          plot2(iloop, iplot, combined_plots, f, dirname, x_seconds, iowait_list, 
                fsize, item);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 3: Steal Time
          iplot = iplot + 1;
          plot3(iloop, iplot, combined_plots, f, dirname, x_seconds, steal_list, 
                fsize, item);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 4: Idle Time
          iplot = iplot + 1;
          plot4(iloop, iplot, combined_plots, f, dirname, x_seconds, idle_list,
                fsize, item);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 5: Read Throughput and Total CPU Utilization
          iplot = iplot + 1;
          fsize = 6;
          plot5(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                fsize, item, device_data_list, line_list);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 6: Write Throughput and Total CPU Utilization
          iplot = iplot + 1;
          plot6(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                fsize, item, device_data_list, line_list);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 7: Read Request complete rate, Write Request complete rate, and Total CPU Utilization
          # HTML report output (opt of section)
@@ -2554,19 +2554,19 @@ if __name__ == '__main__':
          fsize = 6
          plot7(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                fsize, item, device_data_list, line_list);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
          
          # Figure 8: Read Request merge rate, Write Request merge rate, and Total CPU Utilization
          iplot = iplot + 1;
          plot8(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                fsize, item, device_data_list, line_list);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
       
          # Figure 9: Avg. Request Size, Avg. Queue Length, and Total CPU Utilization
          iplot = iplot + 1;
          plot9(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                fsize, item, device_data_list, line_list);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
       
          # Figure 10: Average Wait Times for read, write requests
          iplot = iplot + 1;
@@ -2577,13 +2577,13 @@ if __name__ == '__main__':
             plot10v10(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                       fsize, item, device_data_list, line_list);
          # end if
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
       
          # Figure 11: Percentage CPU Util
          iplot = iplot + 1;
          plot11(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                 fsize, item, device_data_list, line_list);
-         print("   Finished Plot ",iplot," of ",max_plots);
+         print "   Finished Plot ",iplot," of ",max_plots;
       # end for
       
    elif (combined_plots == 1):
@@ -2598,56 +2598,56 @@ if __name__ == '__main__':
       iplot = iplot + 1;
       plot1(iloop, iplot, combined_plots, f, dirname, x_seconds, user_list, system_list, 
             nice_list, fsize, item);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
       
       # Figure 2: iowait percentage time
       iplot = iplot + 1;
       plot2(iloop, iplot, combined_plots, f, dirname, x_seconds, iowait_list, 
             fsize, item);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
       
       # Figure 3: Steal Time
       iplot = iplot + 1;
       plot3(iloop, iplot, combined_plots, f, dirname, x_seconds, steal_list, 
             fsize, item);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
          
       # Figure 4: Idle Time
       iplot = iplot + 1;
       plot4(iloop, iplot, combined_plots, f, dirname, x_seconds, idle_list,
             fsize, item);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
       
       # Figure 5: Read Throughput and Total CPU Utilization
       iplot = iplot + 1;
       fsize = 6;
       plot5(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
            fsize, item, device_data_list, line_list);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
       
       # Figure 6: Write Throughput and Total CPU Utilization
       iplot = iplot + 1;
       plot6(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
             fsize, item, device_data_list, line_list);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
       
       # Figure 7: Read Request complete rate, Write Request complete rate, and Total CPU Utilization
       iplot = iplot + 1;
       plot7(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
           fsize, item, device_data_list, line_list);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
       
       # Figure 8: Read Request merge rate, Write Request merge rate, and Total CPU Utilization
       iplot = iplot + 1;
       plot8(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
             fsize, item, device_data_list, line_list);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
 
       # Figure 9: Avg. Request Size, Avg. Queue Length, and Total CPU Utilization
       iplot = iplot + 1;
       plot9(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
             fsize, item, device_data_list, line_list);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
 
       # Figure 10: Average Wait Times for read, write requests
       iplot = iplot + 1;
@@ -2658,21 +2658,21 @@ if __name__ == '__main__':
          plot10v10(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
                   fsize, item, device_data_list, line_list);
       # end if
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
 
       # Figure 11: Percentage CPU Util
       iplot = iplot + 1;
       plot11(iloop, iplot, combined_plots, f, dirname, x_seconds, time_sum_list,
              fsize, item, device_data_list, line_list);
-      print("   Finished Plot ",iplot," of ",max_plots);
+      print "   Finished Plot ",iplot," of ",max_plots;
    # end of
-   print("Finished. Please open the document HTML_REPORT/report.html in a browser.");
+   print "Finished. Please open the document HTML_REPORT/report.html in a browser.";
    
    # Start of Pickling
    # =================
    if (pickle_success > 0):
       # Open file for pickling
-      pickle_file = open('iostat_file.pickle', 'wb')
+      pickle_file = open('iostat_file.pickle', 'w')
       
       # Big dictionary:
       iostat_dict = {};
